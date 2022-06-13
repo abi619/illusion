@@ -26,8 +26,6 @@ if (node_ENV === 'production' || node_ENV === 'staging') {
 
 const port = 3001
 
-console.log(express.static('frontend/build'))
-
 app.listen(port, () => {
     console.log(`app running on port ${port}`)
 })
