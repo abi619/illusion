@@ -8,11 +8,17 @@ const {notFound, errorHandler} = require('./middlewares/errorMiddleware')
 const node_ENV = "production"
 
 if (node_ENV === 'production' || node_ENV === 'staging') {
-    app.use(express.static(path.join(__dirname, "frontend/build")));
-    app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
-    });
+    app.use(express.static(path.join(__dirname, '/frontend/build')))
+    app.get('*', (req, res) =>
+      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    )
+} else {
+    app.get('/', (req, res) => {
+      res.send('API is running....')
+    })
 }
+
+
 
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.jjl6o.mongodb.net/authenticationn?retryWrites=true&w=majority", {
