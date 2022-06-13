@@ -5,8 +5,13 @@ const app = require('./app')
 const path = require('path');
 const {notFound, errorHandler} = require('./middlewares/errorMiddleware')
 
-app.use(notFound)
-app.use(errorHandler)
+if (node_ENV === 'production' || node_ENV === 'staging') {
+    app.use(express.static(path.join(__dirname, "frontend/build")));
+    app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
+    });
+}
+
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.jjl6o.mongodb.net/authenticationn?retryWrites=true&w=majority", {
     useNewUrlParser: true,
@@ -17,12 +22,9 @@ mongoose.connect("mongodb+srv://admin:admin@cluster0.jjl6o.mongodb.net/authentic
 
 const node_ENV = "production"
 
-if (node_ENV === 'production' || node_ENV === 'staging') {
-    app.use(express.static(path.join(__dirname, "frontend/build")));
-    app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
-    });
-}
+
+app.use(notFound)
+app.use(errorHandler)
 
 const port = process.env.PORT || 3000
 
