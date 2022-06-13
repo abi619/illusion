@@ -6,6 +6,7 @@ const path = require('path');
 const {notFound, errorHandler} = require('./middlewares/errorMiddleware')
 
 const node_ENV = "production"
+const __dirname = path.resolve()
 
 if (node_ENV === 'production' || node_ENV === 'staging') {
     app.use(express.static(path.join(__dirname, '/frontend/build')))
