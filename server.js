@@ -5,6 +5,8 @@ const app = require('./app')
 const path = require('path');
 const {notFound, errorHandler} = require('./middlewares/errorMiddleware')
 
+const node_ENV = "production"
+
 if (node_ENV === 'production' || node_ENV === 'staging') {
     app.use(express.static(path.join(__dirname, "frontend/build")));
     app.get('*', (req, res) => {
@@ -20,7 +22,7 @@ mongoose.connect("mongodb+srv://admin:admin@cluster0.jjl6o.mongodb.net/authentic
     .then(() => console.log('connected to mongoDB!'))
     .catch((err) => console.log(`${err.message}`))
 
-const node_ENV = "production"
+
 
 
 app.use(notFound)
