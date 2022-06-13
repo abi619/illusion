@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Form, Button, Row, Col, Alert, Container, Image } from "react-bootstrap";
 import { userLoginAction } from "../actions/loginAction";
-import { Formik } from 'formik';
 import axios from "axios";
 
 const LoginScreen = ({ history }) => {
