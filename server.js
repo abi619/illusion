@@ -17,15 +17,15 @@ mongoose.connect("mongodb+srv://admin:admin@cluster0.jjl6o.mongodb.net/authentic
 const app = express()
 const node_ENV = "production"
 
-const corsOptions ={
-    origin:'*', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200,
- }
+// const corsOptions ={
+//     origin:'*', 
+//     credentials:true,            //access-control-allow-credentials:true
+//     optionSuccessStatus:200,
+//  }
 
 //initializing the express app
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 app.use(express.json())
 
