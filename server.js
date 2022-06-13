@@ -1,4 +1,4 @@
-// require('dotenv/config')
+require('dotenv/config')
 const mongoose = require('mongoose')
 const express = require('express')
 const app = require('./app')
@@ -24,7 +24,7 @@ if (node_ENV === 'production' || node_ENV === 'staging') {
     });
 }
 
-const port = 3001
+const port = process.env.PORT || 3001
 
 app.listen(port, () => {
     console.log(`app running on port ${port}`)
