@@ -1,0 +1,7 @@
+export const LOGIN_LOADER = 'LOGIN_LOADER'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_FAILURE = 'LOGIN_FAILURE'
+
+export const OTP_LOADER = 'OTP_LOADER'
+export const OTP_SUCCESS = 'OTP_SUCCESS'
+export const OTP_FAILURE = 'OTP_FAILURE'
