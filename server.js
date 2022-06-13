@@ -18,13 +18,13 @@ mongoose.connect("mongodb+srv://admin:admin@cluster0.jjl6o.mongodb.net/authentic
 const node_ENV = "production"
 
 if (node_ENV === 'production' || node_ENV === 'staging') {
-    app.use(express.static('/frontend'));
+    app.use(express.static(path.join(__dirname, "frontend/build")));
     app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
     });
 }
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 
 app.listen(port, () => {
     console.log(`app running on port ${port}`)
